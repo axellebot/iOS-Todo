@@ -1,12 +1,18 @@
 PODS:
   - BEMCheckBox (1.4.0)
+  - R.swift (3.2.0):
+    - R.swift.Library (~> 3.0.2)
+  - R.swift.Library (3.0.2)
 
 DEPENDENCIES:
   - BEMCheckBox
+  - R.swift
 
 SPEC CHECKSUMS:
   BEMCheckBox: e18e4a148905b290bd03d98b767651c104f4eda3
+  R.swift: 207a372a2b5977caef440c696a368009460641d1
+  R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
 
-PODFILE CHECKSUM: febf0eb4821803223010fc773c4d427733e65b97
+PODFILE CHECKSUM: 8690cd567eb57bd1bf6574e0e11508a0fe7b41fb
 
 COCOAPODS: 1.1.1

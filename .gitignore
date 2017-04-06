@@ -179,3 +179,4 @@ fastlane/test_output
 
 ### Custom ###
 .idea/
+*.generated.swift

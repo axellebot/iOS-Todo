@@ -6,6 +6,10 @@ target 'Todo' do
   use_frameworks!
 
   # Pods for Todo
+  # Front
   pod 'BEMCheckBox'
+  
+  # Back
+  pod 'R.swift'
 
 end
