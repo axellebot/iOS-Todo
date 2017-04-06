@@ -30,11 +30,9 @@ class ItemTableViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-
         // Setting up segment Items to show
 
         getSegmentItems()
-
 
         let listName = listData.name
         self.title = "\(listName) List"
@@ -57,7 +55,6 @@ class ItemTableViewController: UITableViewController {
             }
 
             allItems.append(item)
-
         }
 
 
@@ -119,11 +116,10 @@ class ItemTableViewController: UITableViewController {
 
         //returning correct icons and colors for each item's status
         if item.isCompleted {
-            // Introducing the statusji™
-            cell.statusLabel.text = item.statusji
+            //cell.itemCheckboxImage.image = UIImage(named: "ic_checked")
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
-            cell.statusLabel.text = ""
+            //cell.itemCheckboxImage.image = UIImage(named: "ic_unchecked")
             cell.itemNameLabel.textColor = UIColor.black
         }
 

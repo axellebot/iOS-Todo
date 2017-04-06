@@ -278,20 +278,12 @@
                                                 <action selector="buttonTapped:" destination="wNJ-AO-nfg" eventType="touchUpInside" id="ud4-Vg-eqX"/>
                                             </connections>
                                         </button>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="S" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="ZSH-ml-XzM">
-                                            <rect key="frame" x="8" y="6" width="30" height="30"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                            <nil key="textColor"/>
-                                            <nil key="highlightedColor"/>
-                                        </label>
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="checkBoxButton" destination="6zi-Fd-N92" id="qbc-n5-alY"/>
                                     <outlet property="itemCheckboxImage" destination="Ldl-cR-11y" id="aqO-do-HGU"/>
                                     <outlet property="itemNameLabel" destination="BHa-ds-kt9" id="8vW-co-fnP"/>
-                                    <outlet property="statusLabel" destination="ZSH-ml-XzM" id="1TH-Bm-YY3"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
