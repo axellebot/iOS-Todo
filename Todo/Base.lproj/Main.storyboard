@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16D32" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z13-sU-NVS">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="12118" systemVersion="16C67" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES" initialViewController="z13-sU-NVS">
     <device id="retina4_7" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="12086"/>
+        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -21,7 +22,7 @@
                             <tableViewSection headerTitle="New To-Do Details" id="ybo-TU-fKm">
                                 <cells>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="itemNameCell" id="8ZP-a9-K5P">
-                                        <rect key="frame" x="0.0" y="55.5" width="375" height="44"/>
+                                        <rect key="frame" x="0.0" y="56" width="375" height="44"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="8ZP-a9-K5P" id="xae-ei-srs">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="43"/>
@@ -45,7 +46,7 @@
                                         </tableViewCellContentView>
                                     </tableViewCell>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" indentationWidth="10" reuseIdentifier="itemDescriptionCell" rowHeight="171" id="qP9-1f-8Cl">
-                                        <rect key="frame" x="0.0" y="99.5" width="375" height="171"/>
+                                        <rect key="frame" x="0.0" y="100" width="375" height="171"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="qP9-1f-8Cl" id="DhK-Jb-rQP">
                                             <rect key="frame" x="0.0" y="0.0" width="375" height="170"/>
@@ -226,21 +227,33 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
-                        <segmentedControl key="tableHeaderView" opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" id="r9R-TU-7ND">
-                            <rect key="frame" x="0.0" y="0.0" width="375" height="30"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                            <segments>
-                                <segment title="To Do"/>
-                                <segment title="All"/>
-                                <segment title="Done"/>
-                            </segments>
-                            <connections>
-                                <action selector="segmentedControlActionChanged:" destination="oCd-9A-ndl" eventType="valueChanged" id="IQR-lB-TTp"/>
-                            </connections>
-                        </segmentedControl>
+                        <view key="tableHeaderView" contentMode="scaleToFill" id="l7O-xI-vaG">
+                            <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <subviews>
+                                <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="1" translatesAutoresizingMaskIntoConstraints="NO" id="r9R-TU-7ND">
+                                    <rect key="frame" x="10" y="7" width="355" height="30"/>
+                                    <segments>
+                                        <segment title="To Do"/>
+                                        <segment title="All"/>
+                                        <segment title="Done"/>
+                                    </segments>
+                                    <connections>
+                                        <action selector="segmentedControlActionChanged:" destination="oCd-9A-ndl" eventType="valueChanged" id="IQR-lB-TTp"/>
+                                    </connections>
+                                </segmentedControl>
+                            </subviews>
+                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <constraints>
+                                <constraint firstItem="r9R-TU-7ND" firstAttribute="centerY" secondItem="l7O-xI-vaG" secondAttribute="centerY" id="46m-cS-xgQ"/>
+                                <constraint firstItem="r9R-TU-7ND" firstAttribute="leading" secondItem="l7O-xI-vaG" secondAttribute="leading" constant="10" id="EwA-Eq-tEw"/>
+                                <constraint firstItem="r9R-TU-7ND" firstAttribute="bottom" secondItem="l7O-xI-vaG" secondAttribute="bottomMargin" id="Rfv-Jn-iK2"/>
+                                <constraint firstAttribute="trailing" secondItem="r9R-TU-7ND" secondAttribute="trailing" constant="10" id="zCq-v5-Upp"/>
+                            </constraints>
+                        </view>
                         <prototypes>
                             <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemTableViewCell" id="wNJ-AO-nfg" customClass="ItemTableViewCell" customModule="Todo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="58" width="375" height="44"/>
+                                <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wNJ-AO-nfg" id="Ifw-i4-i3K">
                                     <rect key="frame" x="0.0" y="0.0" width="342" height="44"/>
