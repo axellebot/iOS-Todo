@@ -7,6 +7,8 @@
 //
 
 import UIKit
+import BEMCheckBox
+
 
 //
 //protocol ItemTableViewCellDelegate: class {
@@ -20,14 +22,12 @@ class ItemTableViewCell: UITableViewCell {
 
     //func functionName(name: ItemTableViewCell) -> ()
     // MARK: Properties
-    @IBOutlet weak var itemCheckboxImage: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
-    @IBOutlet weak var checkBoxButton: UIButton!
+    @IBOutlet weak var checkBoxButton: BEMCheckBox!
 
-    @IBAction func buttonTapped(_ sender: UIButton) {
 
+    @IBAction func buttonTapped(_ sender: BEMCheckBox) {
         onClick?(self)
-
     }
 
     override func awakeFromNib() {

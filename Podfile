@@ -6,5 +6,6 @@ target 'Todo' do
   use_frameworks!
 
   # Pods for Todo
+  pod 'BEMCheckBox'
 
 end

@@ -116,10 +116,10 @@ class ItemTableViewController: UITableViewController {
 
         //returning correct icons and colors for each item's status
         if item.isCompleted {
-            cell.itemCheckboxImage.image = UIImage(named: "ic_checked")
+            cell.checkBoxButton.setOn(true, animated:true)
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
-            cell.itemCheckboxImage.image = UIImage(named: "ic_unchecked")
+            cell.checkBoxButton.setOn(sfalse, animated:true)
             cell.itemNameLabel.textColor = UIColor.black
         }
 
