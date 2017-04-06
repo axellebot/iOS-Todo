@@ -14,23 +14,23 @@ import UIKit
 //}
 
 class ItemTableViewCell: UITableViewCell {
-    
+
     //var item: Item?
-    var onClick: ( (ItemTableViewCell) -> () )?
-    
+    var onClick: ((ItemTableViewCell) -> ())?
+
     //func functionName(name: ItemTableViewCell) -> ()
     // MARK: Properties
     @IBOutlet weak var itemCheckboxImage: UIImageView!
     @IBOutlet weak var itemNameLabel: UILabel!
     @IBOutlet weak var checkBoxButton: UIButton!
     @IBOutlet weak var statusLabel: UILabel!
-    
+
     @IBAction func buttonTapped(_ sender: UIButton) {
-        
+
         onClick?(self)
-        
+
     }
-    
+
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
