@@ -3,16 +3,23 @@ PODS:
   - R.swift (3.2.0):
     - R.swift.Library (~> 3.0.2)
   - R.swift.Library (3.0.2)
+  - RxCocoa (3.2.0):
+    - RxSwift (~> 3.1)
+  - RxSwift (3.2.0)
 
 DEPENDENCIES:
-  - BEMCheckBox
-  - R.swift
+  - BEMCheckBox (~> 1.4)
+  - R.swift (~> 3.0)
+  - RxCocoa (~> 3.2)
+  - RxSwift (~> 3.2)
 
 SPEC CHECKSUMS:
   BEMCheckBox: e18e4a148905b290bd03d98b767651c104f4eda3
   R.swift: 207a372a2b5977caef440c696a368009460641d1
   R.swift.Library: fbdec16c9802ad104fc1ba53415dc190e6ec5c73
+  RxCocoa: ccdf43101a70407097a29082f648ba1676075b30
+  RxSwift: 46574f70d416b7923c237195939cc488a7fbf3a0
 
-PODFILE CHECKSUM: 8690cd567eb57bd1bf6574e0e11508a0fe7b41fb
+PODFILE CHECKSUM: e96c33cadb0f77d37f4fafa387722a5c107f4870
 
-COCOAPODS: 1.1.1
+COCOAPODS: 1.2.0
