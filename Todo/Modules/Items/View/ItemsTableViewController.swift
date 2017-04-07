@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemTableViewController: UITableViewController {
+class ItemsTableViewController: UITableViewController {
 
     var listData: List!
     var items: [Item]!
@@ -119,7 +119,7 @@ class ItemTableViewController: UITableViewController {
             cell.checkBoxButton.setOn(true, animated:true)
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
-            cell.checkBoxButton.setOn(sfalse, animated:true)
+            cell.checkBoxButton.setOn(false, animated:true)
             cell.itemNameLabel.textColor = UIColor.black
         }
 
@@ -151,11 +151,11 @@ class ItemTableViewController: UITableViewController {
             guard let item = sender as? Item else {
                 return
             }
-            guard let itemDetailViewController = segue.destination as? ItemDetailTableViewController else {
+            guard let itemDetailsViewController = segue.destination as? ItemDetailsTableViewController else {
                 return
             }
 
-            itemDetailViewController.item = item
+            itemDetailsViewController.item = item
         }
 
         if segue.identifier == "AddItem" {
@@ -201,7 +201,7 @@ class ItemTableViewController: UITableViewController {
     // from the Apple Food Tracker tutorial
     @IBAction func unwindToItemTable(sender: UIStoryboardSegue) {
 
-        if let sourceViewController = sender.source as? ItemDetailTableViewController, let item = sourceViewController.item {
+        if let sourceViewController = sender.source as? ItemDetailsTableViewController, let item = sourceViewController.item {
 
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
 

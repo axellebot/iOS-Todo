@@ -10,7 +10,7 @@ import UIKit
 
 // Add UITextFieldDelegate to check when an input has been changed.
 
-class ListDetailTableViewController: UITableViewController {
+class ListDetailsTableViewController: UITableViewController {
 
     // MARK: Properties
     @IBOutlet weak var listNameTextField: UITextField!

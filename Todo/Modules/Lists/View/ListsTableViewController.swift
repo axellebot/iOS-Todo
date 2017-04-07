@@ -8,9 +8,9 @@
 
 import UIKit
 
-class ListTableViewController: UIViewController {
+class ListsTableViewController: UITableViewController {
     
-    @IBOutlet weak var listsTableView: UITableView!
+    @IBOutlet var listsTableView: UITableView!
     var presenter: ListsPresentation!
     var lists: [List] = [] {
         didSet {
@@ -37,7 +37,6 @@ class ListTableViewController: UIViewController {
         
         listsTableView.dataSource = self
         listsTableView.delegate = self
-        listsTableView.rowHeight = UITableViewAutomaticDimension
         listsTableView.estimatedRowHeight = 128.0
         //listsTableView.register(ListTableViewCell.self)
     }
@@ -47,7 +46,7 @@ class ListTableViewController: UIViewController {
     }
 }
 
-extension ListTableViewController: ListsView {
+extension ListsTableViewController: ListsView {
     
     func showNoContentScreen() {
     }
@@ -63,19 +62,19 @@ extension ListTableViewController: ListsView {
     }
 }
 
-extension ListTableViewController: UITableViewDataSource, UITableViewDelegate {
+extension ListsTableViewController {
     // MARK: - Table view data source
 
-    func numberOfSections(in tableView: UITableView) -> Int {
+    override func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
 
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
 
         return lists.count
     }
 
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.listTableViewCell, for: indexPath)!
 
         let list = lists[(indexPath as NSIndexPath).row]
@@ -89,7 +88,7 @@ extension ListTableViewController: UITableViewDataSource, UITableViewDelegate {
 
 
     // Override to support conditional editing of the table view.
-    func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the specified item to be editable.
         return true
     }
@@ -97,28 +96,32 @@ extension ListTableViewController: UITableViewDataSource, UITableViewDelegate {
 
 
     // Override to support editing the table view.
-    func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
+            tableView.beginUpdates()
             lists.remove(at: indexPath.row)
             //self.tableView.reloadData()
             tableView.deleteRows(at: [indexPath], with: .fade)
+            tableView.endUpdates()
+        } else if editingStyle == .insert {
+            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
 
 
-    func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
+    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
 
     }
 
 
     // Override to support conditional rearranging of the table view.
-    func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
+    override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
         // Return false if you do not want the item to be re-orderable.
         return true
     }
 
 
-    func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         presenter.didSelectList(lists[indexPath.row])
     }
 }

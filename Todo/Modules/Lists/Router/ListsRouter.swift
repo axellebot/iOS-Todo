@@ -13,7 +13,7 @@ class ListsRouter: ListsWireframe {
     weak var viewController: UIViewController?
     
     static func assembleModule() -> UIViewController {
-        let view = R.storyboard.listsStoryboard.listsViewController()
+        let view = R.storyboard.listsStoryboard.listsTableViewController()
         let presenter = ListsPresenter()
         let interactor = ListsInteractor()
         let router = ListsRouter()

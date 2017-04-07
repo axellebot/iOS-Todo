@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ItemDetailTableViewController: UITableViewController {
+class ItemDetailsTableViewController: UITableViewController {
 
     //MARK: Outlets
     @IBOutlet weak var itemNameTextField: UITextField!
