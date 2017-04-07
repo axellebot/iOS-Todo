@@ -8,25 +8,33 @@
 
 import Foundation
 import RxSwift
+import Realm
+import RealmSwift
 
 class ListsInteractor: ListsUseCase {
-    
+
     weak var output: ListsInteractorOutput!
     private var disposeBag = DisposeBag()
-    
-    func fetchLists() {
-        let lists: [List] = [
-            List(name: "🚣 Sport", items: [
-                Item(title: "Push-up 💪", description: nil)
-                ]),
-            List(name: "🎓 Studies", items: [
-                Item(title: "Finish iOS project", description: "Project for Gael Robin"),
-                ]),
-            List(name: "💼 Pro", items: [
-                Item(title: "Find a new company", description: nil),
-                ])
-        ]
 
+    func deleteList(_ list: TDList) {
+    }
+
+    func fetchLists() {
+//        let lists: [TDList] = [
+//            TDList(name: "🚣 Sport", items: [
+//                Item(title: "Push-up 💪", description: nil)
+//                ]),
+//            TDList(name: "🎓 Studies", items: [
+//                Item(title: "Finish iOS project", description: "Project for Gael Robin"),
+//                ]),
+//            TDList(name: "💼 Pro", items: [
+//                Item(title: "Find a new company", description: nil),
+//                ])
+//        ]
+
+        let lists :[TDList] = [];
+        
         self.output.listsFetched(lists)
     }
+
 }

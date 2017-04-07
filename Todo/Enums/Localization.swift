@@ -14,5 +14,8 @@ enum Localization {
     enum Lists {
         static let navigationBarTitle = "To Do Lists"
     }
+    enum ListDetails {
+        static let navigationBarTitle = "Add a List"
+    }
 
 }

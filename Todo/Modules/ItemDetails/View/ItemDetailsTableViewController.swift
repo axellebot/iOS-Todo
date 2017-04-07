@@ -28,15 +28,15 @@ class ItemDetailsTableViewController: UITableViewController {
         }
     }
 
-    var item: Item!
-    var list: List!
+    var item: TDItem!
+    var list: TDList!
 
     override func viewDidLoad() {
         super.viewDidLoad()
 
         if let item = item {
             self.title = "Edit Item"
-            itemNameTextField.text = item.title
+            itemNameTextField.text = item.label
             itemDescriptionTextField.text = item.description
         }
 
@@ -92,7 +92,9 @@ class ItemDetailsTableViewController: UITableViewController {
             let name = itemNameTextField.text ?? ""
             let description = itemDescriptionTextField.text ?? ""
 
-            item = Item(title: name, description: description)
+            item = TDItem()
+            item.label = name
+            item.desc = description
 
         }
 

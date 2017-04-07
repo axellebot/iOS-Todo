@@ -14,7 +14,7 @@ class ListsPresenter: ListsPresentation {
     var interactor: ListsUseCase!
     var router: ListsWireframe!
     
-    var lists: [List] = [] {
+    var lists: [TDList] = [] {
         didSet {
             if lists.count > 0 {
                 view?.showListsData(lists)
@@ -29,7 +29,7 @@ class ListsPresenter: ListsPresentation {
         view?.showActivityIndicator()
     }
     
-    func didSelectList(_ list: List) {
+    func didSelectList(_ list: TDList) {
         router.presentItems(forList: list)
     }
     
@@ -40,7 +40,7 @@ class ListsPresenter: ListsPresentation {
 
 extension ListsPresenter: ListsInteractorOutput {
     
-    func listsFetched(_ lists: [List]) {
+    func listsFetched(_ lists: [TDList]) {
         self.lists = lists
         view?.hideActivityIndicator()
     }

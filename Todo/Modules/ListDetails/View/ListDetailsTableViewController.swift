@@ -1,73 +1,74 @@
 //
 //  ListDetailTableViewController.swift
-//  ToDoList
+//  Todo
 //
 //  Created by Axel Le Bot on 05/04/2017.
 //  Copyright © 2017 Axel Le Bot. All rights reserved.
 //
 
 import UIKit
-
-// Add UITextFieldDelegate to check when an input has been changed.
+import PKHUD
 
 class ListDetailsTableViewController: UITableViewController {
 
-    // MARK: Properties
     @IBOutlet weak var listNameTextField: UITextField!
     @IBOutlet weak var saveButton: UIBarButtonItem!
 
-    @IBAction func cancelButtonPressed(_ sender: AnyObject) {
-        dismiss(animated: true, completion: nil)
-    }
-
-    var list: List?
-    var lists: [List]!
+    var presenter: ListDetailsPresentation!
+    var list: TDList?
 
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        setupView()
+        presenter.viewDidLoad()
     }
 
-    override func didReceiveMemoryWarning() {
-        super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    fileprivate func  setupView() {
+        let cancelButton = UIBarButtonItem(
+                barButtonSystemItem: .cancel,
+                target: self,
+                action: #selector(didClickCancelButton)
+        )
+
+        let saveButton = UIBarButtonItem(
+                barButtonSystemItem: .save,
+                target: self,
+                action: #selector(didClickSaveButton)
+        )
+        navigationItem.rightBarButtonItem = saveButton
+        navigationItem.leftBarButtonItem = cancelButton
+        navigationItem.title = Localization.ListDetails.navigationBarTitle
     }
 
-    // MARK: - Navigation
-
-    override func shouldPerformSegue(withIdentifier identifier: String, sender: Any?) -> Bool {
-        if saveButton === sender as? UIBarButtonItem {
-            guard let name = listNameTextField.text else {
-                return true
-            }
-
-            if (name.isEmpty) {
-                displayError()
-                return false
-            } else {
-                return true
-            }
-        }
-        return true
+    @objc fileprivate func didClickCancelButton(_ sender: Any?) {
+        presenter.didClickCancelButton()
     }
 
-    func displayError() {
+    @objc fileprivate func didClickSaveButton(_ sender: Any?) {
+        presenter.didClickSaveButton()
+    }
+}
 
-        let alertController = UIAlertController(title: "Empty List Name", message:
-        "Please give a name to your list to create it.", preferredStyle: UIAlertControllerStyle.alert)
-
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
-
-        self.present(alertController, animated: true, completion: nil)
-
+extension ListDetailsTableViewController: ListDetailsView {
+    
+    func showNoContentScreen(){
+        
+    }
+    
+    func showListData(_ list: TDList) {
+        self.list = list
+        self.listNameTextField.text = list.label
     }
 
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+    func showActivityIndicator(){
+        HUD.show(.progress)
+    }
+    func hideActivityIndicator(){
+        HUD.flash(.success, delay: 1.0)
+    }
 
-        if saveButton === sender as? UIBarButtonItem {
-            guard let name = listNameTextField.text else {
-                return
-            }
-            list = List(name: name, items: [])
-        }
+    func displayErrorMessage(_ message: String){
+        HUD.flash(.label(message), delay: 2.0)
     }
 }

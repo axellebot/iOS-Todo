@@ -10,11 +10,11 @@ import UIKit
 
 class ItemsTableViewController: UITableViewController {
 
-    var listData: List!
-    var items: [Item]!
+    var listData: TDList!
+    var items: [TDItem]!
     //var selectedSegment: Int!
 
-    var segmentItems: [Item]!
+    var segmentItems: [TDItem]!
 
     // MARK: Properties
     // segment switch outlet
@@ -34,7 +34,7 @@ class ItemsTableViewController: UITableViewController {
 
         getSegmentItems()
 
-        let listName = listData.name
+        let listName = listData.label
         self.title = "\(listName) List"
 
     }
@@ -42,9 +42,9 @@ class ItemsTableViewController: UITableViewController {
     func getSegmentItems() {
         let items = listData.items
 
-        var allItems: [Item] = []
-        var completedItems: [Item] = []
-        var newItems: [Item] = []
+        var allItems: [TDItem] = []
+        var completedItems: [TDItem] = []
+        var newItems: [TDItem] = []
 
         for item in items {
 
@@ -97,7 +97,7 @@ class ItemsTableViewController: UITableViewController {
         let item = segmentItems[(indexPath as NSIndexPath).row]
 
         //set item name
-        cell.itemNameLabel.text = item.title
+        cell.itemNameLabel.text = item.label
 
         //on checkbox click
         cell.onClick = { cell in
@@ -107,7 +107,7 @@ class ItemsTableViewController: UITableViewController {
             }
 
             let item = self.segmentItems[indexPath.row]
-            print("Row \(item.title) ")
+            print("Row \(item.label) ")
 
             //switch status
             item.isCompleted = !item.isCompleted
@@ -135,7 +135,7 @@ class ItemsTableViewController: UITableViewController {
         displayItemDetails(item: item)
     }
 
-    func displayItemDetails(item: Item) {
+    func displayItemDetails(item: TDItem) {
         performSegue(withIdentifier: "ToItemDetails", sender: item)
     }
 
@@ -148,7 +148,7 @@ class ItemsTableViewController: UITableViewController {
             backItem.title = ""
             navigationItem.backBarButtonItem = backItem
 
-            guard let item = sender as? Item else {
+            guard let item = sender as? TDItem else {
                 return
             }
             guard let itemDetailsViewController = segue.destination as? ItemDetailsTableViewController else {

@@ -9,10 +9,15 @@ target 'Todo' do
   # Front
   pod 'RxCocoa', '~> 3.2'
   pod 'BEMCheckBox', '~> 1.4'
+  pod 'PKHUD', '~> 4.0'
 
   # Back
   pod 'RxSwift', '~> 3.2'
   pod 'R.swift', '~> 3.0'
+  pod 'RxRealm','~> 0.5'
+  pod 'QueryKit'
+  pod 'RealmSwift','~> 2.4'
+  pod 'Realm','~> 2.4'
 
 end
 

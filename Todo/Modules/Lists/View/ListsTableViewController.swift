@@ -7,12 +7,13 @@
 //
 
 import UIKit
+import PKHUD
 
 class ListsTableViewController: UITableViewController {
     
     @IBOutlet var listsTableView: UITableView!
     var presenter: ListsPresentation!
-    var lists: [List] = [] {
+    var lists: [TDList] = [] {
         didSet {
             listsTableView.reloadData()
         }
@@ -22,7 +23,6 @@ class ListsTableViewController: UITableViewController {
 
         setupView()
         presenter.viewDidLoad()
-        self.navigationItem.leftBarButtonItem = self.editButtonItem
     }
     
     fileprivate func setupView() {
@@ -31,7 +31,8 @@ class ListsTableViewController: UITableViewController {
             target: self,
             action: #selector(didClickAddButton)
         )
-        
+
+        navigationItem.leftBarButtonItem = editButtonItem
         navigationItem.rightBarButtonItem = addButton
         navigationItem.title = Localization.Lists.navigationBarTitle
         
@@ -51,14 +52,18 @@ extension ListsTableViewController: ListsView {
     func showNoContentScreen() {
     }
     
-    func showListsData(_ lists: [List]) {
+    func showListsData(_ lists: [TDList]) {
         self.lists = lists
     }
     func showActivityIndicator(){
-        
+        HUD.show(.progress)
     }
     func hideActivityIndicator(){
-        
+        HUD.flash(.success, delay: 1.0)
+    }
+
+    func displayErrorMessage(_ message: String){
+        HUD.flash(.label(message), delay: 2.0)
     }
 }
 
@@ -79,8 +84,8 @@ extension ListsTableViewController {
 
         let list = lists[(indexPath as NSIndexPath).row]
 
-        cell.listNameLabel.text = list.name
-        cell.backgroundColor = list.color
+        cell.listNameLabel.text = list.label
+        cell.backgroundColor = list.color()
         cell.listNameLabel.textColor = UIColor.white
 
         return cell

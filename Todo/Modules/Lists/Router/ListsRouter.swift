@@ -9,35 +9,36 @@
 import UIKit
 
 class ListsRouter: ListsWireframe {
-    
+
     weak var viewController: UIViewController?
-    
+
     static func assembleModule() -> UIViewController {
         let view = R.storyboard.listsStoryboard.listsTableViewController()
         let presenter = ListsPresenter()
         let interactor = ListsInteractor()
         let router = ListsRouter()
-        
+
         let navigation = UINavigationController(rootViewController: view!)
-        
+
         view?.presenter = presenter
-        
+
         presenter.view = view
         presenter.interactor = interactor
         presenter.router = router
-        
+
         interactor.output = presenter
-        
+
         router.viewController = view
-        
+
         return navigation
     }
-    
-    func presentItems(forList list: List) {
-        
+
+    func presentItems(forList list: TDList) {
+
     }
-    
+
     func presentAddList(){
-        
+        let listDetailsModuleViewController = ListDetailsRouter.assembleModule()
+        viewController?.present(listDetailsModuleViewController, animated: true)
     }
 }

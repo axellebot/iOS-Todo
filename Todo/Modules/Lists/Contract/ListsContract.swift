@@ -12,7 +12,7 @@ protocol ListsView: IndicatableView {
     var presenter: ListsPresentation! { get set }
     
     func showNoContentScreen()
-    func showListsData(_ lists: [List])
+    func showListsData(_ lists: [TDList])
 }
 
 protocol ListsPresentation: class {
@@ -22,25 +22,26 @@ protocol ListsPresentation: class {
     
     func viewDidLoad()
     
-    func didSelectList(_ list: List)
+    func didSelectList(_ list: TDList)
     func didClickAddButton()
 }
 
 protocol ListsUseCase: class {
     weak var output: ListsInteractorOutput! { get set }
-    
+
+    func deleteList(_ list : TDList)
     func fetchLists()
 }
 
 protocol ListsInteractorOutput: class {
-    func listsFetched(_ lists: [List])
+    func listsFetched(_ lists: [TDList])
     func listsFetchFailed()
 }
 
 protocol ListsWireframe: class {
     weak var viewController: UIViewController? { get set }
     
-    func presentItems(forList list: List)
+    func presentItems(forList list: TDList)
     func presentAddList()
     
     static func assembleModule() -> UIViewController
