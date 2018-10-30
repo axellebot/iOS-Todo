@@ -1,5 +1,5 @@
 //
-//  ItemTableViewController.swift
+//  TaskTableViewController.swift
 //  ToDoList
 //
 //  Created by Axel Le Bot on 05/04/2017.
@@ -8,64 +8,31 @@
 
 import UIKit
 
-class ItemTableViewController: UITableViewController {
-
-    var listData: List!
-    var items: [Item]!
-    //var selectedSegment: Int!
-
-    var segmentItems: [Item]!
-
-    // MARK: Properties
+class TaskTableViewController: UITableViewController {
+    // MARK: - Properties
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var groupData: TaskGroup!
+    var segmentedTasks: [Task]!
+    
+    //MARK: Outlets
     // segment switch outlet
     @IBOutlet weak var statusSegmentControl: UISegmentedControl!
 
+    // MARK: - Actions
     // segment switch action
     @IBAction func segmentedControlActionChanged(_ sender: AnyObject) {
         getSegmentItems()
         self.tableView.reloadData()
     }
 
-    // MARK: Logic
+    // MARK: - Table Controller Logic
     override func viewDidLoad() {
         super.viewDidLoad()
 
         // Setting up segment Items to show
-
         getSegmentItems()
 
-        let listName = listData.name
-        self.title = "\(listName) List"
-
-    }
-
-    func getSegmentItems() {
-        let items = listData.items
-
-        var allItems: [Item] = []
-        var completedItems: [Item] = []
-        var newItems: [Item] = []
-
-        for item in items {
-
-            if item.isCompleted {
-                completedItems.append(item)
-            } else {
-                newItems.append(item)
-            }
-
-            allItems.append(item)
-        }
-
-
-        switch (statusSegmentControl.selectedSegmentIndex) {
-        case 0:
-            segmentItems = newItems
-        case 2:
-            segmentItems = completedItems
-        default:
-            segmentItems = allItems
-        }
+        self.title = groupData.name! + " List"
     }
 
     override func didReceiveMemoryWarning() {
@@ -82,47 +49,51 @@ class ItemTableViewController: UITableViewController {
 
     // Number of cells
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        guard let segment = segmentItems else {
+        guard let segment = segmentedTasks else {
             return 0
         }
         return segment.count
-
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ItemTableViewCell", for: indexPath) as! ItemTableViewCell
-
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.taskTableViewCell.identifier, for: indexPath) as! TaskTableViewCell
+        
         //load item
-        let item = segmentItems[(indexPath as NSIndexPath).row]
+        let task = segmentedTasks[(indexPath as NSIndexPath).row]
 
         //set item name
-        cell.itemNameLabel.text = item.title
+        cell.taskNameLabel.text = task.name
 
         //on checkbox click
         cell.onClick = { cell in
-
             guard let indexPath = tableView.indexPath(for: cell) else {
                 return
             }
-
-            let item = self.segmentItems[indexPath.row]
-            print("Row \(item.title) ")
+            let task = self.segmentedTasks[indexPath.row]
+            print("Row \(task.name) ")
 
             //switch status
-            item.isCompleted = !item.isCompleted
+            task.isDone = !task.isDone
+            
+            // Save the data to coredata
+            do {
+                try self.context.save()
+            } catch {
+                let nserror = error as NSError
+                fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+            }
+            
             tableView.reloadData()
         }
 
         //returning correct icons and colors for each item's status
-        if item.isCompleted {
+        if task.isDone {
             cell.checkBoxButton.setOn(true, animated:true)
-            cell.itemNameLabel.textColor = UIColor.gray
+            cell.taskNameLabel.textColor = UIColor.gray
         } else {
             cell.checkBoxButton.setOn(false, animated:true)
-            cell.itemNameLabel.textColor = UIColor.black
+            cell.taskNameLabel.textColor = UIColor.black
         }
-
         return cell
     }
 
@@ -131,43 +102,38 @@ class ItemTableViewController: UITableViewController {
 
         //let items = listData.items
         //guard let item = segmentItems[row] else { return }
-        let item = segmentItems[row]
+        let item = segmentedTasks[row]
         displayItemDetails(item: item)
     }
 
-    func displayItemDetails(item: Item) {
-        performSegue(withIdentifier: "ToItemDetails", sender: item)
+    func displayItemDetails(item: Task) {
+        performSegue(withIdentifier: R.segue.taskTableViewController.toTaskDetails.identifier, sender: item)
     }
 
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-
         //add if to compare segue.identifier!!!!!
-        if segue.identifier == "ToItemDetails" {
+        if segue.identifier == R.segue.taskTableViewController.toTaskDetails.identifier {
 
             let backItem = UIBarButtonItem()
             backItem.title = ""
             navigationItem.backBarButtonItem = backItem
 
-            guard let item = sender as? Item else {
+            guard let task = sender as? Task else {
                 return
             }
-            guard let itemDetailViewController = segue.destination as? ItemDetailTableViewController else {
+            guard let itemDetailViewController = segue.destination as? TaskDetailTableViewController else {
                 return
             }
-
-            itemDetailViewController.item = item
+            itemDetailViewController.task = task
         }
 
-        if segue.identifier == "AddItem" {
+        if segue.identifier == R.segue.taskTableViewController.addTask.identifier {
+            print("Adding new item.")
 
             let backItem = UIBarButtonItem()
             backItem.title = "Cancel"
             navigationItem.backBarButtonItem = backItem
-
-            print("Adding new item.")
         }
-
-
     }
 
     // Override to support conditional editing of the table view.
@@ -182,9 +148,11 @@ class ItemTableViewController: UITableViewController {
         if editingStyle == .delete {
             // Delete the row from the data source
             let row = indexPath.row
-
             // TODO: will crash on deleting complete items, from the item view
-            listData.items.remove(at: row)
+            // Delete from CoreData
+            let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+            context.delete(segmentedTasks[row])
+            
             getSegmentItems()
 
             tableView.reloadData()
@@ -196,47 +164,71 @@ class ItemTableViewController: UITableViewController {
         }
     }
 
-
     // get the item from the edit view // function sender parameter is a segue, and is used in IB in the Exit button
     // from the Apple Food Tracker tutorial
-    @IBAction func unwindToItemTable(sender: UIStoryboardSegue) {
-
-        if let sourceViewController = sender.source as? ItemDetailTableViewController, let item = sourceViewController.item {
-
+    @IBAction func unwindToTaskTable(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? TaskDetailTableViewController, let task = sourceViewController.task {
             if let selectedIndexPath = tableView.indexPathForSelectedRow {
-
                 // Update an existing item.
                 //listData.items[selectedIndexPath.row] = item
-                segmentItems[selectedIndexPath.row] = item
-
+                segmentedTasks[selectedIndexPath.row] = task
                 tableView.reloadRows(at: [selectedIndexPath], with: .none)
-
             } else {
-
-                // Add a new item.
-
                 // Go back to All segment if adding an item from the Done segment
                 if statusSegmentControl.selectedSegmentIndex == 2 {
                     statusSegmentControl.selectedSegmentIndex = 1
                 }
 
-                let count = listData.items.count
-                let newIndexPath = NSIndexPath(row: count, section: 0)
+                let count = groupData.tasks?.count
+                let newIndexPath = NSIndexPath(row: count!, section: 0)
                 print(newIndexPath.row)
 
                 //add item to list
-                listData.items.append(item)
-
+                groupData.addToTasks(task)
+                
+                do {
+                    try context.save()
+                } catch {
+                    let nserror = error as NSError
+                    fatalError("Unresolved error \(nserror), \(nserror.userInfo)")
+                }
+                
                 getSegmentItems()
 
-                //tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
                 tableView.reloadData()
-
             }
-
         }
-
-
     }
 
+    
+    // MARK: - Functions
+    func getSegmentItems() {
+        let tasks = groupData.tasks
+        
+        var allTasks: [Task] = []
+        var completedTasks: [Task] = []
+        var newTasks: [Task] = []
+        
+        // Sorting Tasks
+        for case let task as Task in tasks! {
+            if task.isDone {
+                completedTasks.append(task)
+            } else {
+                newTasks.append(task)
+            }
+            allTasks.append(task)
+        }
+        
+        // Display
+        switch (statusSegmentControl.selectedSegmentIndex) {
+        case 0:
+            segmentedTasks = newTasks
+        case 2:
+            segmentedTasks = completedTasks
+        default:
+            segmentedTasks = allTasks
+        }
+    }
+
+    
 }

@@ -9,18 +9,17 @@
 /* Begin PBXBuildFile section */
 		89F45D98CF3CAF6F2F358666 /* Pods_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52888A3BC90A5D118A375125 /* Pods_Todo.framework */; };
 		ECA90E232188B6D400207E13 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA90E222188B6D400207E13 /* R.generated.swift */; };
+		ECA90E262188BD0C00207E13 /* todo.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = ECA90E242188BD0C00207E13 /* todo.xcdatamodeld */; };
 		ECB1F9A81E95561400964A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F9A71E95561400964A22 /* Assets.xcassets */; };
 		ECB1F9AB1E95561400964A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F9A91E95561400964A22 /* LaunchScreen.storyboard */; };
 		ECB1F9B41E9571A400964A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F9B21E9571A400964A22 /* Main.storyboard */; };
 		ECBA26ED1E95A09E002C3B57 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26D61E95A09E002C3B57 /* AppDelegate.swift */; };
-		ECBA26EE1E95A09E002C3B57 /* Item.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26D81E95A09E002C3B57 /* Item.swift */; };
-		ECBA26EF1E95A09E002C3B57 /* List.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26D91E95A09E002C3B57 /* List.swift */; };
-		ECBA26F01E95A09E002C3B57 /* ListDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26DE1E95A09E002C3B57 /* ListDetailTableViewController.swift */; };
-		ECBA26F11E95A09E002C3B57 /* ItemDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26E21E95A09E002C3B57 /* ItemDetailTableViewController.swift */; };
-		ECBA26F21E95A09E002C3B57 /* ListTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26E61E95A09E002C3B57 /* ListTableViewCell.swift */; };
-		ECBA26F31E95A09E002C3B57 /* ListTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26E71E95A09E002C3B57 /* ListTableViewController.swift */; };
-		ECBA26F41E95A09E002C3B57 /* ItemTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26EB1E95A09E002C3B57 /* ItemTableViewCell.swift */; };
-		ECBA26F51E95A09E002C3B57 /* ItemTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26EC1E95A09E002C3B57 /* ItemTableViewController.swift */; };
+		ECBA26F01E95A09E002C3B57 /* GroupDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26DE1E95A09E002C3B57 /* GroupDetailTableViewController.swift */; };
+		ECBA26F11E95A09E002C3B57 /* TaskDetailTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26E21E95A09E002C3B57 /* TaskDetailTableViewController.swift */; };
+		ECBA26F21E95A09E002C3B57 /* GroupTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26E61E95A09E002C3B57 /* GroupTableViewCell.swift */; };
+		ECBA26F31E95A09E002C3B57 /* GroupTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26E71E95A09E002C3B57 /* GroupTableViewController.swift */; };
+		ECBA26F41E95A09E002C3B57 /* TaskTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26EB1E95A09E002C3B57 /* TaskTableViewCell.swift */; };
+		ECBA26F51E95A09E002C3B57 /* TaskTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECBA26EC1E95A09E002C3B57 /* TaskTableViewController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,20 +27,19 @@
 		52888A3BC90A5D118A375125 /* Pods_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86865588EA39B16FBA07B25F /* Pods-Todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Todo/Pods-Todo.debug.xcconfig"; sourceTree = "<group>"; };
 		ECA90E222188B6D400207E13 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
+		ECA90E252188BD0C00207E13 /* Model.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = Model.xcdatamodel; sourceTree = "<group>"; };
 		ECB1F99D1E95561400964A22 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB1F9A71E95561400964A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECB1F9AA1E95561400964A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		ECB1F9AC1E95561400964A22 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		ECB1F9B31E9571A400964A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		ECBA26D61E95A09E002C3B57 /* AppDelegate.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
-		ECBA26D81E95A09E002C3B57 /* Item.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Item.swift; sourceTree = "<group>"; };
-		ECBA26D91E95A09E002C3B57 /* List.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = List.swift; sourceTree = "<group>"; };
-		ECBA26DE1E95A09E002C3B57 /* ListDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListDetailTableViewController.swift; sourceTree = "<group>"; };
-		ECBA26E21E95A09E002C3B57 /* ItemDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemDetailTableViewController.swift; sourceTree = "<group>"; };
-		ECBA26E61E95A09E002C3B57 /* ListTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewCell.swift; sourceTree = "<group>"; };
-		ECBA26E71E95A09E002C3B57 /* ListTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ListTableViewController.swift; sourceTree = "<group>"; };
-		ECBA26EB1E95A09E002C3B57 /* ItemTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewCell.swift; sourceTree = "<group>"; };
-		ECBA26EC1E95A09E002C3B57 /* ItemTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ItemTableViewController.swift; sourceTree = "<group>"; };
+		ECBA26DE1E95A09E002C3B57 /* GroupDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupDetailTableViewController.swift; sourceTree = "<group>"; };
+		ECBA26E21E95A09E002C3B57 /* TaskDetailTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskDetailTableViewController.swift; sourceTree = "<group>"; };
+		ECBA26E61E95A09E002C3B57 /* GroupTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewCell.swift; sourceTree = "<group>"; };
+		ECBA26E71E95A09E002C3B57 /* GroupTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GroupTableViewController.swift; sourceTree = "<group>"; };
+		ECBA26EB1E95A09E002C3B57 /* TaskTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewCell.swift; sourceTree = "<group>"; };
+		ECBA26EC1E95A09E002C3B57 /* TaskTableViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskTableViewController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +74,7 @@
 		ECB1F9941E95561400964A22 = {
 			isa = PBXGroup;
 			children = (
+				ECA90E242188BD0C00207E13 /* todo.xcdatamodeld */,
 				DC2DB91898346A86DFBE16A0 /* Frameworks */,
 				0252E83294D970C6FCC8FBB0 /* Pods */,
 				ECB1F99E1E95561400964A22 /* Products */,
@@ -107,65 +106,23 @@
 		ECBA26D51E95A09E002C3B57 /* Classes */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA26D71E95A09E002C3B57 /* Entities */,
 				ECBA26DA1E95A09E002C3B57 /* Views */,
 				ECBA26D61E95A09E002C3B57 /* AppDelegate.swift */,
 			);
 			path = Classes;
 			sourceTree = "<group>";
 		};
-		ECBA26D71E95A09E002C3B57 /* Entities */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26D81E95A09E002C3B57 /* Item.swift */,
-				ECBA26D91E95A09E002C3B57 /* List.swift */,
-			);
-			path = Entities;
-			sourceTree = "<group>";
-		};
 		ECBA26DA1E95A09E002C3B57 /* Views */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA26DB1E95A09E002C3B57 /* AddList */,
-				ECBA26DF1E95A09E002C3B57 /* AddTodo */,
-				ECBA26E31E95A09E002C3B57 /* ListList */,
-				ECBA26E81E95A09E002C3B57 /* TodoList */,
+				ECBA26DE1E95A09E002C3B57 /* GroupDetailTableViewController.swift */,
+				ECBA26E21E95A09E002C3B57 /* TaskDetailTableViewController.swift */,
+				ECBA26E61E95A09E002C3B57 /* GroupTableViewCell.swift */,
+				ECBA26E71E95A09E002C3B57 /* GroupTableViewController.swift */,
+				ECBA26EB1E95A09E002C3B57 /* TaskTableViewCell.swift */,
+				ECBA26EC1E95A09E002C3B57 /* TaskTableViewController.swift */,
 			);
 			path = Views;
-			sourceTree = "<group>";
-		};
-		ECBA26DB1E95A09E002C3B57 /* AddList */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26DE1E95A09E002C3B57 /* ListDetailTableViewController.swift */,
-			);
-			path = AddList;
-			sourceTree = "<group>";
-		};
-		ECBA26DF1E95A09E002C3B57 /* AddTodo */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26E21E95A09E002C3B57 /* ItemDetailTableViewController.swift */,
-			);
-			path = AddTodo;
-			sourceTree = "<group>";
-		};
-		ECBA26E31E95A09E002C3B57 /* ListList */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26E61E95A09E002C3B57 /* ListTableViewCell.swift */,
-				ECBA26E71E95A09E002C3B57 /* ListTableViewController.swift */,
-			);
-			path = ListList;
-			sourceTree = "<group>";
-		};
-		ECBA26E81E95A09E002C3B57 /* TodoList */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26EB1E95A09E002C3B57 /* ItemTableViewCell.swift */,
-				ECBA26EC1E95A09E002C3B57 /* ItemTableViewController.swift */,
-			);
-			path = TodoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -299,16 +256,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				ECBA26F01E95A09E002C3B57 /* ListDetailTableViewController.swift in Sources */,
-				ECBA26F51E95A09E002C3B57 /* ItemTableViewController.swift in Sources */,
-				ECBA26F11E95A09E002C3B57 /* ItemDetailTableViewController.swift in Sources */,
-				ECBA26EE1E95A09E002C3B57 /* Item.swift in Sources */,
+				ECBA26F01E95A09E002C3B57 /* GroupDetailTableViewController.swift in Sources */,
+				ECBA26F51E95A09E002C3B57 /* TaskTableViewController.swift in Sources */,
+				ECBA26F11E95A09E002C3B57 /* TaskDetailTableViewController.swift in Sources */,
 				ECBA26ED1E95A09E002C3B57 /* AppDelegate.swift in Sources */,
-				ECBA26F41E95A09E002C3B57 /* ItemTableViewCell.swift in Sources */,
-				ECBA26EF1E95A09E002C3B57 /* List.swift in Sources */,
+				ECBA26F41E95A09E002C3B57 /* TaskTableViewCell.swift in Sources */,
 				ECA90E232188B6D400207E13 /* R.generated.swift in Sources */,
-				ECBA26F21E95A09E002C3B57 /* ListTableViewCell.swift in Sources */,
-				ECBA26F31E95A09E002C3B57 /* ListTableViewController.swift in Sources */,
+				ECBA26F21E95A09E002C3B57 /* GroupTableViewCell.swift in Sources */,
+				ECA90E262188BD0C00207E13 /* todo.xcdatamodeld in Sources */,
+				ECBA26F31E95A09E002C3B57 /* GroupTableViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -485,6 +441,19 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCVersionGroup section */
+		ECA90E242188BD0C00207E13 /* todo.xcdatamodeld */ = {
+			isa = XCVersionGroup;
+			children = (
+				ECA90E252188BD0C00207E13 /* Model.xcdatamodel */,
+			);
+			currentVersion = ECA90E252188BD0C00207E13 /* Model.xcdatamodel */;
+			path = todo.xcdatamodeld;
+			sourceTree = "<group>";
+			versionGroupType = wrapper.xcdatamodel;
+		};
+/* End XCVersionGroup section */
 	};
 	rootObject = ECB1F9951E95561400964A22 /* Project object */;
 }

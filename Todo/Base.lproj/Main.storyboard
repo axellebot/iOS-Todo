@@ -13,7 +13,7 @@
         <!--Add an Item-->
         <scene sceneID="pM5-e6-76V">
             <objects>
-                <tableViewController id="doT-ef-itU" customClass="ItemDetailTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="doT-ef-itU" customClass="TaskDetailTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="hIO-au-ONC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -85,14 +85,14 @@
                         </barButtonItem>
                         <barButtonItem key="rightBarButtonItem" systemItem="save" id="tHR-hc-rEc">
                             <connections>
-                                <segue destination="JFX-Ib-UfJ" kind="unwind" unwindAction="unwindToItemTableWithSender:" id="er5-a7-I1y"/>
+                                <segue destination="JFX-Ib-UfJ" kind="unwind" unwindAction="unwindToTaskTableWithSender:" id="er5-a7-I1y"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="itemDescriptionTextField" destination="gmr-CS-s4E" id="R9x-hm-7br"/>
-                        <outlet property="itemNameTextField" destination="yQ8-6Z-6ux" id="Eq9-8V-Ix2"/>
                         <outlet property="saveButton" destination="tHR-hc-rEc" id="Z6y-TH-VEb"/>
+                        <outlet property="taskDescriptionTextField" destination="gmr-CS-s4E" id="R9x-hm-7br"/>
+                        <outlet property="taskNameTextField" destination="yQ8-6Z-6ux" id="Eq9-8V-Ix2"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ETk-Wc-hqo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -100,24 +100,24 @@
             </objects>
             <point key="canvasLocation" x="4308" y="455"/>
         </scene>
-        <!--To Do Lists-->
+        <!--To Do List-->
         <scene sceneID="DiT-WP-wOr">
             <objects>
-                <tableViewController id="tMi-LI-Gil" customClass="ListTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="50" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z1Y-9a-XuW">
+                <tableViewController id="tMi-LI-Gil" customClass="GroupTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="none" rowHeight="84" sectionHeaderHeight="28" sectionFooterHeight="28" id="Z1Y-9a-XuW">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ListTableViewCell" rowHeight="50" id="naC-Xf-Zd3" customClass="ListTableViewCell" customModule="Todo" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="375" height="50"/>
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="none" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="GroupTableViewCell" rowHeight="84" id="naC-Xf-Zd3" customClass="GroupTableViewCell" customModule="Todo" customModuleProvider="target">
+                                <rect key="frame" x="0.0" y="28" width="375" height="84"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="naC-Xf-Zd3" id="dLF-sd-Pyz">
-                                    <rect key="frame" x="0.0" y="0.0" width="341" height="50"/>
+                                    <rect key="frame" x="0.0" y="0.0" width="341" height="84"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="list name" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="26" adjustsLetterSpacingToFitWidth="YES" translatesAutoresizingMaskIntoConstraints="NO" id="SHa-JM-ZEq">
-                                            <rect key="frame" x="13" y="3" width="314" height="45"/>
+                                            <rect key="frame" x="13" y="12" width="314" height="60"/>
                                             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                             <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                             <nil key="textColor"/>
@@ -126,7 +126,7 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <connections>
-                                    <outlet property="listNameLabel" destination="SHa-JM-ZEq" id="RMX-BW-btl"/>
+                                    <outlet property="groupNameLabel" destination="SHa-JM-ZEq" id="RMX-BW-btl"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -135,15 +135,15 @@
                             <outlet property="delegate" destination="tMi-LI-Gil" id="8b8-r8-zSz"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="To Do Lists" id="ecV-Jy-DWZ">
+                    <navigationItem key="navigationItem" title="To Do List" id="ecV-Jy-DWZ">
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="7el-1b-EVZ">
                             <connections>
-                                <segue destination="Q2j-uF-uGi" kind="presentation" identifier="ToAddList" id="Fbb-67-SCl"/>
+                                <segue destination="Q2j-uF-uGi" kind="presentation" identifier="ToAddGroup" id="Fbb-67-SCl"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <segue destination="oCd-9A-ndl" kind="show" identifier="ToListItems" id="RxY-yL-yy5"/>
+                        <segue destination="oCd-9A-ndl" kind="show" identifier="ToGroupTasks" id="RxY-yL-yy5"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="JDB-0s-hMo" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -153,7 +153,7 @@
         <!--Add a List-->
         <scene sceneID="HKb-I8-0uT">
             <objects>
-                <tableViewController id="bA8-u9-Wl0" customClass="ListDetailTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="bA8-u9-Wl0" customClass="GroupDetailTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="grouped" rowHeight="44" sectionHeaderHeight="18" sectionFooterHeight="18" id="enH-kI-cKk">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -203,13 +203,13 @@
                         <barButtonItem key="rightBarButtonItem" title="Save" id="Aa8-WV-1uh">
                             <connections>
                                 <action selector="saveButtonPressed:" destination="bA8-u9-Wl0" id="oMa-O4-pM8"/>
-                                <segue destination="7RP-BK-IZl" kind="unwind" unwindAction="unwindToListTableWithSender:" id="IDK-Ha-eyX"/>
+                                <segue destination="7RP-BK-IZl" kind="unwind" unwindAction="unwindToGroupTableWithSender:" id="IDK-Ha-eyX"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="listNameTextField" destination="ERD-Yf-E0m" id="AUR-0F-z5w"/>
                         <outlet property="saveButton" destination="Aa8-WV-1uh" id="5px-fv-4xU"/>
+                        <outlet property="taskGroupNameTextField" destination="ERD-Yf-E0m" id="AUR-0F-z5w"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="7ea-5i-TEY" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -220,7 +220,7 @@
         <!--List Name-->
         <scene sceneID="Z0h-fM-Ogz">
             <objects>
-                <tableViewController id="oCd-9A-ndl" customClass="ItemTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController id="oCd-9A-ndl" customClass="TaskTableViewController" customModule="Todo" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" id="mdI-6p-Hik">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -250,7 +250,7 @@
                             </constraints>
                         </view>
                         <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="ItemTableViewCell" id="wNJ-AO-nfg" customClass="ItemTableViewCell" customModule="Todo" customModuleProvider="target">
+                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="TaskTableViewCell" id="wNJ-AO-nfg" customClass="TaskTableViewCell" customModule="Todo" customModuleProvider="target">
                                 <rect key="frame" x="0.0" y="72" width="375" height="44"/>
                                 <autoresizingMask key="autoresizingMask"/>
                                 <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="wNJ-AO-nfg" id="Ifw-i4-i3K">
@@ -276,7 +276,7 @@
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="checkBoxButton" destination="bsF-Fw-SUX" id="p7h-Pl-Twr"/>
-                                    <outlet property="itemNameLabel" destination="BHa-ds-kt9" id="8vW-co-fnP"/>
+                                    <outlet property="taskNameLabel" destination="BHa-ds-kt9" id="8vW-co-fnP"/>
                                 </connections>
                             </tableViewCell>
                         </prototypes>
@@ -289,13 +289,13 @@
                         <barButtonItem key="backBarButtonItem" title=" " id="R2E-Dp-K6u"/>
                         <barButtonItem key="rightBarButtonItem" systemItem="add" id="6Oe-7y-JRv">
                             <connections>
-                                <segue destination="bVb-kF-S5v" kind="presentation" identifier="AddItem" id="zJl-Hv-tLS"/>
+                                <segue destination="bVb-kF-S5v" kind="presentation" identifier="AddTask" id="zJl-Hv-tLS"/>
                             </connections>
                         </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="statusSegmentControl" destination="r9R-TU-7ND" id="Lzq-G6-Ort"/>
-                        <segue destination="doT-ef-itU" kind="show" identifier="ToItemDetails" id="HDN-ix-VWE"/>
+                        <segue destination="doT-ef-itU" kind="show" identifier="ToTaskDetails" id="HDN-ix-VWE"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="ndg-WM-IvN" userLabel="First Responder" sceneMemberID="firstResponder"/>

@@ -1,5 +1,5 @@
 //
-//  ListTableViewController.swift
+//  GroupTableViewController.swift
 //  ToDoList
 //
 //  Created by Axel Le Bot on 05/04/2017.
@@ -8,30 +8,25 @@
 
 import UIKit
 
-class ListTableViewController: UITableViewController {
-
-    var lists: [List] = [
-            List(name: "🚣 Sport", items: [
-                    Item(title: "Push-up 💪", description: nil)
-            ]),
-            List(name: "🎓 Studies", items: [
-                    Item(title: "Finish iOS project", description: "Project for Gael Robin"),
-            ]),
-            List(name: "💼 Pro", items: [
-                    Item(title: "Find a new company", description: nil),
-            ])
-    ]
-
-    //var list: List
-
-    // MARK: Properties
-
-    // MARK: Actions
-
-    // MARK: Functions
+class GroupTableViewController: UITableViewController {
+    // MARK: - Properties
+    let context = (UIApplication.shared.delegate as! AppDelegate).persistentContainer.viewContext
+    var groups: [TaskGroup]!
+    
+    // MARK: - Actions
+    @IBAction func unwindToGroupTable(sender: UIStoryboardSegue) {
+        if let sourceViewController = sender.source as? GroupDetailTableViewController, let group = sourceViewController.taskGroup {
+            // Add a new group.
+            let newIndexPath = NSIndexPath(row: groups.count, section: 0)
+            groups.append(group)
+            tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+        }
+    }
+    
+    // MARK: - Table Controller Logic
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        fetchData()
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
@@ -45,29 +40,23 @@ class ListTableViewController: UITableViewController {
     }
 
     // MARK: - Table view data source
-
     override func numberOfSections(in tableView: UITableView) -> Int {
-
         return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-
-        return lists.count
+        return groups.count
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "ListTableViewCell", for: indexPath) as! ListTableViewCell
+        let cell = tableView.dequeueReusableCell(withIdentifier: R.reuseIdentifier.groupTableViewCell.identifier, for: indexPath) as! GroupTableViewCell
 
-        let list = lists[(indexPath as NSIndexPath).row]
+        let group = groups[(indexPath as NSIndexPath).row]
 
-        cell.listNameLabel.text = list.name
-        cell.backgroundColor = list.color
-        cell.listNameLabel.textColor = UIColor.white
+        cell.groupNameLabel.text = group.name
 
         return cell
     }
-
 
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -75,28 +64,21 @@ class ListTableViewController: UITableViewController {
         return true
     }
 
-
-
     // Override to support editing the table view.
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-
-            lists.remove(at: indexPath.row)
+            groups.remove(at: indexPath.row)
             //self.tableView.reloadData()
             tableView.deleteRows(at: [indexPath], with: .fade)
-
+            //TODO : Add delete from coredata
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }
     }
-
-
+    
     // Override to support rearranging the table view.
     override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
     }
-
-
 
     // Override to support conditional rearranging of the table view.
     override func tableView(_ tableView: UITableView, canMoveRowAt indexPath: IndexPath) -> Bool {
@@ -104,75 +86,47 @@ class ListTableViewController: UITableViewController {
         return true
     }
 
-
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-
-
         let row = indexPath.row
-        let listData = lists[row]
+        let listData = groups[row]
 
         displayListData(data: listData)
-
     }
-
-
-    func displayListData(data: List) {
-        performSegue(withIdentifier: "ToListItems", sender: data)
-    }
-
-//    func displayAddList(data: [List]) {
-//        performSegue(withIdentifier: "ToAddList", sender: data)
-//    }
-
+    
     // MARK: - Navigation
-
+    func displayListData(data: TaskGroup) {
+        performSegue(withIdentifier: R.segue.groupTableViewController.toGroupTasks.identifier, sender: data)
+    }
+    
     // In a storyboard-based application, you will often want to do a little preparation before navigation
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         // Get the new view controller using segue.destinationViewController.
         // Pass the selected object to the new view controller.
 
-
-        if segue.identifier == "ToListItems" {
-            print("showing list's items")
-
-//            let backItem = UIBarButtonItem()
-//            backItem.title = ""
-//            navigationItem.backBarButtonItem = backItem
-
-            guard let listData = sender as? List else {
+        if segue.identifier == R.segue.groupTableViewController.toGroupTasks.identifier {
+            print("Preparing navigation to \"GroupTasks\"")
+            guard let listData = sender as? TaskGroup else {
                 return
             }
-            guard let itemTableViewController = segue.destination as? ItemTableViewController else {
+            guard let itemTableViewController = segue.destination as? TaskTableViewController else {
                 return
             }
-
-            itemTableViewController.listData = listData
-
+            itemTableViewController.groupData = listData
         }
 
-        if segue.identifier == "ToAddList" {
-
-            print("Adding a list")
-
+        if segue.identifier == R.segue.groupTableViewController.toAddGroup.identifier {
+            print("Preparing navigation to \"AddGroup\"")
         }
-
-
     }
-
-    @IBAction func unwindToListTable(sender: UIStoryboardSegue) {
-
-        if let sourceViewController = sender.source as? ListDetailTableViewController, let list = sourceViewController.list {
-
-            // Add a new list.
-            let newIndexPath = NSIndexPath(row: lists.count, section: 0)
-            lists.append(list)
-            tableView.insertRows(at: [newIndexPath as IndexPath], with: .bottom)
+    
+    // MARK: - Functions
+    fileprivate func fetchData() {
+        do {
+            self.groups = try context.fetch(TaskGroup.fetchRequest())
+        } catch {
+            print("Fetching Failed")
         }
-
-
     }
-
-
 }
 
 

@@ -9,27 +9,21 @@
 import UIKit
 import BEMCheckBox
 
-
-//
-//protocol ItemTableViewCellDelegate: class {
-//    func switchStatus(forItem item: Item, cell: ItemTableViewCell, sender: UIButton)
-//}
-
-class ItemTableViewCell: UITableViewCell {
+class TaskTableViewCell: UITableViewCell {
 
     //var item: Item?
-    var onClick: ((ItemTableViewCell) -> ())?
+    var onClick: ((TaskTableViewCell) -> ())?
 
-    //func functionName(name: ItemTableViewCell) -> ()
-    // MARK: Properties
-    @IBOutlet weak var itemNameLabel: UILabel!
+    // MARK: - Outlets
+    @IBOutlet weak var taskNameLabel: UILabel!
     @IBOutlet weak var checkBoxButton: BEMCheckBox!
 
-
+    // MARK: - Actions
     @IBAction func buttonTapped(_ sender: BEMCheckBox) {
         onClick?(self)
     }
 
+    // MARK: - Cell Logic
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -37,7 +31,6 @@ class ItemTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 

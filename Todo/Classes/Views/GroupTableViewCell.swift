@@ -8,12 +8,11 @@
 
 import UIKit
 
-class ListTableViewCell: UITableViewCell {
+class GroupTableViewCell: UITableViewCell {
+    // MARK: - Outlets
+    @IBOutlet weak var groupNameLabel: UILabel!
 
-    // MARK: Properties
-    @IBOutlet weak var listNameLabel: UILabel!
-
-
+    // MARK: - Cell Logic
     override func awakeFromNib() {
         super.awakeFromNib()
         // Initialization code
@@ -21,7 +20,6 @@ class ListTableViewCell: UITableViewCell {
 
     override func setSelected(_ selected: Bool, animated: Bool) {
         super.setSelected(selected, animated: animated)
-
         // Configure the view for the selected state
     }
 
