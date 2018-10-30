@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		89F45D98CF3CAF6F2F358666 /* Pods_Todo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 52888A3BC90A5D118A375125 /* Pods_Todo.framework */; };
+		ECA90E232188B6D400207E13 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = ECA90E222188B6D400207E13 /* R.generated.swift */; };
 		ECB1F9A81E95561400964A22 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F9A71E95561400964A22 /* Assets.xcassets */; };
 		ECB1F9AB1E95561400964A22 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F9A91E95561400964A22 /* LaunchScreen.storyboard */; };
 		ECB1F9B41E9571A400964A22 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = ECB1F9B21E9571A400964A22 /* Main.storyboard */; };
@@ -26,6 +27,7 @@
 		1EA68B02923F2D7F29ECF0EE /* Pods-Todo.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.release.xcconfig"; path = "Pods/Target Support Files/Pods-Todo/Pods-Todo.release.xcconfig"; sourceTree = "<group>"; };
 		52888A3BC90A5D118A375125 /* Pods_Todo.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_Todo.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		86865588EA39B16FBA07B25F /* Pods-Todo.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-Todo.debug.xcconfig"; path = "Pods/Target Support Files/Pods-Todo/Pods-Todo.debug.xcconfig"; sourceTree = "<group>"; };
+		ECA90E222188B6D400207E13 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = SOURCE_ROOT; };
 		ECB1F99D1E95561400964A22 /* Todo.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Todo.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		ECB1F9A71E95561400964A22 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		ECB1F9AA1E95561400964A22 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -92,6 +94,7 @@
 		ECB1F99F1E95561400964A22 /* Todo */ = {
 			isa = PBXGroup;
 			children = (
+				ECA90E222188B6D400207E13 /* R.generated.swift */,
 				ECBA26D51E95A09E002C3B57 /* Classes */,
 				ECB1F9A71E95561400964A22 /* Assets.xcassets */,
 				ECB1F9AC1E95561400964A22 /* Info.plist */,
@@ -173,6 +176,7 @@
 			buildConfigurationList = ECB1F9AF1E95561400964A22 /* Build configuration list for PBXNativeTarget "Todo" */;
 			buildPhases = (
 				1CD9C3261C865FE57E3F0593 /* [CP] Check Pods Manifest.lock */,
+				ECA90E212188B62C00207E13 /* R.swift */,
 				ECB1F9991E95561400964A22 /* Sources */,
 				ECB1F99A1E95561400964A22 /* Frameworks */,
 				ECB1F99B1E95561400964A22 /* Resources */,
@@ -262,15 +266,31 @@
 			inputPaths = (
 				"${SRCROOT}/Pods/Target Support Files/Pods-Todo/Pods-Todo-frameworks.sh",
 				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
+				"${BUILT_PRODUCTS_DIR}/R.swift.Library/Rswift.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
 				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/Rswift.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Todo/Pods-Todo-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
+		};
+		ECA90E212188B62C00207E13 /* R.swift */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = R.swift;
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"$PODS_ROOT/R.swift/rswift\" generate \"$SRCROOT\"\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -286,6 +306,7 @@
 				ECBA26ED1E95A09E002C3B57 /* AppDelegate.swift in Sources */,
 				ECBA26F41E95A09E002C3B57 /* ItemTableViewCell.swift in Sources */,
 				ECBA26EF1E95A09E002C3B57 /* List.swift in Sources */,
+				ECA90E232188B6D400207E13 /* R.generated.swift in Sources */,
 				ECBA26F21E95A09E002C3B57 /* ListTableViewCell.swift in Sources */,
 				ECBA26F31E95A09E002C3B57 /* ListTableViewController.swift in Sources */,
 			);
