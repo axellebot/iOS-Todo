@@ -119,7 +119,7 @@ class ItemTableViewController: UITableViewController {
             cell.checkBoxButton.setOn(true, animated:true)
             cell.itemNameLabel.textColor = UIColor.gray
         } else {
-            cell.checkBoxButton.setOn(sfalse, animated:true)
+            cell.checkBoxButton.setOn(false, animated:true)
             cell.itemNameLabel.textColor = UIColor.black
         }
 

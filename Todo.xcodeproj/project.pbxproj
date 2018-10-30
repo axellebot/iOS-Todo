@@ -105,7 +105,7 @@
 			isa = PBXGroup;
 			children = (
 				ECBA26D71E95A09E002C3B57 /* Entities */,
-				ECBA26DA1E95A09E002C3B57 /* Modules */,
+				ECBA26DA1E95A09E002C3B57 /* Views */,
 				ECBA26D61E95A09E002C3B57 /* AppDelegate.swift */,
 			);
 			path = Classes;
@@ -120,7 +120,7 @@
 			path = Entities;
 			sourceTree = "<group>";
 		};
-		ECBA26DA1E95A09E002C3B57 /* Modules */ = {
+		ECBA26DA1E95A09E002C3B57 /* Views */ = {
 			isa = PBXGroup;
 			children = (
 				ECBA26DB1E95A09E002C3B57 /* AddList */,
@@ -128,105 +128,41 @@
 				ECBA26E31E95A09E002C3B57 /* ListList */,
 				ECBA26E81E95A09E002C3B57 /* TodoList */,
 			);
-			path = Modules;
+			path = Views;
 			sourceTree = "<group>";
 		};
 		ECBA26DB1E95A09E002C3B57 /* AddList */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA26DC1E95A09E002C3B57 /* User Interface */,
-			);
-			path = AddList;
-			sourceTree = "<group>";
-		};
-		ECBA26DC1E95A09E002C3B57 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26DD1E95A09E002C3B57 /* View */,
-			);
-			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		ECBA26DD1E95A09E002C3B57 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				ECBA26DE1E95A09E002C3B57 /* ListDetailTableViewController.swift */,
 			);
-			path = View;
+			path = AddList;
 			sourceTree = "<group>";
 		};
 		ECBA26DF1E95A09E002C3B57 /* AddTodo */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA26E01E95A09E002C3B57 /* User Interface */,
-			);
-			path = AddTodo;
-			sourceTree = "<group>";
-		};
-		ECBA26E01E95A09E002C3B57 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26E11E95A09E002C3B57 /* View */,
-			);
-			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		ECBA26E11E95A09E002C3B57 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				ECBA26E21E95A09E002C3B57 /* ItemDetailTableViewController.swift */,
 			);
-			path = View;
+			path = AddTodo;
 			sourceTree = "<group>";
 		};
 		ECBA26E31E95A09E002C3B57 /* ListList */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA26E41E95A09E002C3B57 /* User Interface */,
-			);
-			path = ListList;
-			sourceTree = "<group>";
-		};
-		ECBA26E41E95A09E002C3B57 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26E51E95A09E002C3B57 /* View */,
-			);
-			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		ECBA26E51E95A09E002C3B57 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				ECBA26E61E95A09E002C3B57 /* ListTableViewCell.swift */,
 				ECBA26E71E95A09E002C3B57 /* ListTableViewController.swift */,
 			);
-			path = View;
+			path = ListList;
 			sourceTree = "<group>";
 		};
 		ECBA26E81E95A09E002C3B57 /* TodoList */ = {
 			isa = PBXGroup;
 			children = (
-				ECBA26E91E95A09E002C3B57 /* User Interface */,
-			);
-			path = TodoList;
-			sourceTree = "<group>";
-		};
-		ECBA26E91E95A09E002C3B57 /* User Interface */ = {
-			isa = PBXGroup;
-			children = (
-				ECBA26EA1E95A09E002C3B57 /* View */,
-			);
-			path = "User Interface";
-			sourceTree = "<group>";
-		};
-		ECBA26EA1E95A09E002C3B57 /* View */ = {
-			isa = PBXGroup;
-			children = (
 				ECBA26EB1E95A09E002C3B57 /* ItemTableViewCell.swift */,
 				ECBA26EC1E95A09E002C3B57 /* ItemTableViewController.swift */,
 			);
-			path = View;
+			path = TodoList;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -241,7 +177,6 @@
 				ECB1F99A1E95561400964A22 /* Frameworks */,
 				ECB1F99B1E95561400964A22 /* Resources */,
 				402BDD7E724F71EA87DD098A /* [CP] Embed Pods Frameworks */,
-				492F165E279406F622E8B8BD /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -264,6 +199,7 @@
 				TargetAttributes = {
 					ECB1F99C1E95561400964A22 = {
 						CreatedOnToolsVersion = 8.2.1;
+						LastSwiftMigration = 0940;
 						ProvisioningStyle = Automatic;
 					};
 				};
@@ -306,13 +242,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${PODS_PODFILE_DIR_PATH}/Podfile.lock",
+				"${PODS_ROOT}/Manifest.lock",
 			);
 			name = "[CP] Check Pods Manifest.lock";
 			outputPaths = (
+				"$(DERIVED_FILE_DIR)/Pods-Todo-checkManifestLockResult.txt",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n";
+			shellScript = "diff \"${PODS_PODFILE_DIR_PATH}/Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [ $? != 0 ] ; then\n    # print error to STDERR\n    echo \"error: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\" >&2\n    exit 1\nfi\n# This output is used by Xcode 'outputs' to avoid re-running this script phase.\necho \"SUCCESS\" > \"${SCRIPT_OUTPUT_FILE_0}\"\n";
 			showEnvVarsInLog = 0;
 		};
 		402BDD7E724F71EA87DD098A /* [CP] Embed Pods Frameworks */ = {
@@ -321,28 +260,16 @@
 			files = (
 			);
 			inputPaths = (
+				"${SRCROOT}/Pods/Target Support Files/Pods-Todo/Pods-Todo-frameworks.sh",
+				"${BUILT_PRODUCTS_DIR}/BEMCheckBox/BEMCheckBox.framework",
 			);
 			name = "[CP] Embed Pods Frameworks";
 			outputPaths = (
+				"${TARGET_BUILD_DIR}/${FRAMEWORKS_FOLDER_PATH}/BEMCheckBox.framework",
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Todo/Pods-Todo-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		492F165E279406F622E8B8BD /* [CP] Copy Pods Resources */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Copy Pods Resources";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-Todo/Pods-Todo-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 /* End PBXShellScriptBuildPhase section */
@@ -493,7 +420,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.lebot.todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Debug;
 		};
@@ -509,7 +437,8 @@
 				PRODUCT_BUNDLE_IDENTIFIER = me.lebot.todo;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
-				SWIFT_VERSION = 3.0;
+				SWIFT_SWIFT3_OBJC_INFERENCE = On;
+				SWIFT_VERSION = 4.0;
 			};
 			name = Release;
 		};
