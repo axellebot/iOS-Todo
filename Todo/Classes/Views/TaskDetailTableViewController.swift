@@ -87,9 +87,9 @@ class TaskDetailTableViewController: UITableViewController {
     // MARK: - Functions
     func displayError() {
         let alertController = UIAlertController(title: "Empty Item Name", message:
-            "Please enter a to-do before saving", preferredStyle: UIAlertControllerStyle.alert)
+            "Please enter a to-do before saving", preferredStyle: UIAlertController.Style.alert)
         
-        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertActionStyle.default, handler: nil))
+        alertController.addAction(UIAlertAction(title: "Dismiss", style: UIAlertAction.Style.default, handler: nil))
         
         self.present(alertController, animated: true, completion: nil)
     }

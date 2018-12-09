@@ -1,5 +1,5 @@
 PODS:
-  - BEMCheckBox (1.4.0)
+  - BEMCheckBox (1.4.1)
   - R.swift (4.0.0):
     - R.swift.Library (~> 4.0.0)
   - R.swift.Library (4.0.0)
@@ -15,10 +15,10 @@ SPEC REPOS:
     - R.swift.Library
 
 SPEC CHECKSUMS:
-  BEMCheckBox: e18e4a148905b290bd03d98b767651c104f4eda3
+  BEMCheckBox: 5ba6e37ade3d3657b36caecc35c8b75c6c2b1a4e
   R.swift: d6a5ec2f55a8441dc0ed9f1f8b37d7d11ae85c66
   R.swift.Library: c3af34921024333546e23b70e70d0b4e0cffca75
 
-PODFILE CHECKSUM: aadb271b8d3ed7716e5405fa68f9ae9442676781
+PODFILE CHECKSUM: 879804f54ed073a4ea1f156e76cdd0c824982898
 
 COCOAPODS: 1.5.3

@@ -70,7 +70,7 @@ class TaskTableViewController: UITableViewController {
                 return
             }
             let task = self.segmentedTasks[indexPath.row]
-            print("Row \(task.name) ")
+            print("Row \(String(describing: task.name)) ")
 
             //switch status
             task.isDone = !task.isDone
@@ -143,7 +143,7 @@ class TaskTableViewController: UITableViewController {
     }
 
     // Override to support editing the table view.
-    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCellEditingStyle, forRowAt indexPath: IndexPath) {
+    override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
 
         if editingStyle == .delete {
             // Delete the row from the data source
